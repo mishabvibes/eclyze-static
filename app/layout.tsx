@@ -65,6 +65,9 @@ export const metadata: Metadata = {
     title,
     description,
   },
+  verification: {
+    google: "FfzVsyaS2M5ojeVmNI3qwKlkP6yqjM7mHMN9lL-_twA",
+  },
 };
 
 const organizationSchema = {
