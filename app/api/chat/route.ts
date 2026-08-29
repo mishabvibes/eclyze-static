@@ -6,7 +6,7 @@ import { faqs } from "@/lib/faq-data";
 // Free-tier model on Groq (no credit card, generous daily limits).
 // Confirmed current/active on Groq's docs as of this writing — if you
 // see deprecation notices in your Groq console, swap this string only.
-const MODEL = "llama-3.1-8b-instant";
+const MODEL = "openai/gpt-oss-20b";
 const GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
 
 const MAX_MESSAGE_LENGTH = 400; // characters, per user message
@@ -133,7 +133,11 @@ export async function POST(req: NextRequest) {
     });
 
     if (!response.ok) {
-      // Includes Groq-side rate limiting (429) — surface a friendly message.
+      const errBody = await response.text();
+      console.error(
+        `Groq API error [${response.status}]:`,
+        errBody
+      );
       return NextResponse.json(
         {
           error:
