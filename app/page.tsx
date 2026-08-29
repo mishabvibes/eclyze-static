@@ -7,6 +7,7 @@ import Offer from "@/components/Offer";
 import FAQ from "@/components/FAQ";
 import IntakeForm from "@/components/IntakeForm";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <IntakeForm />
       </main>
       <Footer />
+      <ChatWidget />
     </>
   );
 }

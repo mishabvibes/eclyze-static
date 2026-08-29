@@ -1,26 +1,32 @@
 const projects = [
   {
-    name: "Café Rosette",
-    category: "Food & Beverage",
-    blurb: "Menu, gallery, and table-booking WhatsApp link for a specialty coffee bar.",
-    url: "caferosette.eclyze.site",
-    accent: "coral" as const,
+    name: "Dihana Febin",
+    category: "Portfolio",
+    blurb:
+      "A bold digital-marketer portfolio blending SEO expertise, Meta Ads, and visual design into a high-conversion personal brand.",
+    url: "https://dihanafebin.vercel.app",
+    displayUrl: "dihanafebin.vercel.app",
+    accent: "navy" as const,
     layout: "hero-grid" as const,
   },
   {
-    name: "Nila Boutique",
-    category: "Retail / Fashion",
-    blurb: "Lookbook-style product gallery built to move browsers straight to Instagram DMs.",
-    url: "nilaboutique.eclyze.site",
-    accent: "navy" as const,
+    name: "AIC Amal",
+    category: "Donation Platform",
+    blurb:
+      "A full-featured donation platform for Akode Islamic Centre — supporting community campaigns, agent portals, and seamless UPI payments.",
+    url: "https://aicamal.app",
+    displayUrl: "aicamal.app",
+    accent: "coral" as const,
     layout: "gallery" as const,
   },
   {
-    name: "Kochi Fitness Lab",
-    category: "Fitness Studio",
-    blurb: "Class schedule, trainer bios, and a single conversion-first membership CTA.",
-    url: "kochifitnesslab.eclyze.site",
-    accent: "coral" as const,
+    name: "Rahath Ayurvedic",
+    category: "Local Business",
+    blurb:
+      "SEO-optimised storefront for a traditional Ayurvedic shop in Mannarkkad — bilingual content, Google Reviews, and enquiry-first UX.",
+    url: "https://rahathayurvedic.vercel.app",
+    displayUrl: "rahathayurvedic.vercel.app",
+    accent: "navy" as const,
     layout: "list" as const,
   },
 ];
@@ -28,11 +34,11 @@ const projects = [
 function BrowserMockup({
   accent,
   layout,
-  url,
+  displayUrl,
 }: {
   accent: "coral" | "navy";
   layout: "hero-grid" | "gallery" | "list";
-  url: string;
+  displayUrl: string;
 }) {
   const solid = accent === "coral" ? "bg-coral" : "bg-navy";
   const tint = accent === "coral" ? "bg-coral/40" : "bg-navy/25";
@@ -45,7 +51,7 @@ function BrowserMockup({
         <span className="w-2 h-2 rounded-full bg-line-strong" />
         <span className={`w-2 h-2 rounded-full ${solid}`} />
         <span className="ml-2 font-mono text-[10px] text-ink-faint truncate">
-          {url}
+          {displayUrl}
         </span>
       </div>
 
@@ -104,11 +110,11 @@ export default function Work() {
           Selected Work
         </span>
         <h2 className="mt-4 font-display font-semibold text-3xl md:text-4xl max-w-2xl leading-tight">
-          Recently shipped, five days at a time.
+          Real builds. Real businesses. Live now.
         </h2>
         <p className="mt-4 max-w-xl text-ink-muted leading-relaxed">
-          A sample of builds delivered on the standard flat-fee timeline —
-          each one live, mobile-first, and tuned for its business.
+          Every project below is a live website we shipped — mobile-first,
+          SEO-ready, and built to convert.
         </p>
 
         <div className="mt-14 grid md:grid-cols-3 gap-6">
@@ -117,7 +123,7 @@ export default function Work() {
               <BrowserMockup
                 accent={p.accent}
                 layout={p.layout}
-                url={p.url}
+                displayUrl={p.displayUrl}
               />
               <div className="mt-5 flex items-baseline justify-between">
                 <h3 className="font-display font-medium text-lg">
@@ -127,17 +133,34 @@ export default function Work() {
                   {p.category}
                 </span>
               </div>
-              <p className="mt-2 text-sm text-ink-muted leading-relaxed">
+              <p className="mt-2 text-sm text-ink-muted leading-relaxed flex-1">
                 {p.blurb}
               </p>
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-ink border border-line-strong px-4 py-2.5 hover:border-navy hover:text-navy transition-colors self-start"
+              >
+                Explore Site
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
             </div>
           ))}
         </div>
-
-        <p className="mt-10 font-mono text-[11px] text-ink-faint">
-          — sample builds shown for illustration. Swap in real client
-          projects here.
-        </p>
       </div>
     </section>
   );
