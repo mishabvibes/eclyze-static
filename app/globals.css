@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #faf7f1;
+  --bg-panel: #f1ebdd;
+  --bg-invert: #10182b;
+  --line: rgba(20, 22, 27, 0.12);
+  --line-strong: rgba(20, 22, 27, 0.24);
+  --ink: #14161b;
+  --ink-muted: #585c65;
+  --ink-faint: #8a8d95;
+  --coral: #ff5b35;
+  --navy: #1c3766;
+  --gold: #c9962f;
+  --coral-ink: #14161b;
+  --invert-ink: #f6f1e4;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-body: "Inter", sans-serif;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-panel: var(--bg-panel);
+  --color-bg-invert: var(--bg-invert);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-coral: var(--coral);
+  --color-navy: var(--navy);
+  --color-gold: var(--gold);
+  --color-coral-ink: var(--coral-ink);
+  --color-invert-ink: var(--invert-ink);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-body);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), sans-serif;
+}
+
+.grid-dots {
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.corner-brackets {
+  position: relative;
+}
+.corner-brackets::before,
+.corner-brackets::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--coral);
+  opacity: 0.85;
+}
+.corner-brackets::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.corner-brackets::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+::selection {
+  background: var(--coral);
+  color: var(--invert-ink);
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-pulse-dot {
+    animation: none;
+  }
+}
