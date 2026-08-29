@@ -9,30 +9,30 @@ export default function Header() {
           className="font-display font-semibold text-lg tracking-tight text-ink"
         >
           {SITE.name}
-          <span className="text-coral">.</span>
+          <span className="text-navy">.</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-ink-muted">
-          <a href="#standard" className="hover:text-coral transition-colors">
+          <a href="#standard" className="hover:text-navy transition-colors">
             Why Eclyze
           </a>
-          <a href="#work" className="hover:text-coral transition-colors">
+          <a href="#work" className="hover:text-navy transition-colors">
             Work
           </a>
-          <a href="#offer" className="hover:text-coral transition-colors">
+          <a href="#offer" className="hover:text-navy transition-colors">
             Pricing
           </a>
-          <a href="#faq" className="hover:text-coral transition-colors">
+          <a href="#faq" className="hover:text-navy transition-colors">
             FAQ
           </a>
-          <a href="#intake" className="hover:text-coral transition-colors">
+          <a href="#intake" className="hover:text-navy transition-colors">
             Start Project
           </a>
         </nav>
 
         <a
           href="#intake"
-          className="font-mono text-xs uppercase tracking-widest bg-coral text-coral-ink px-4 py-2 border border-coral hover:bg-transparent hover:text-coral transition-colors"
+          className="font-mono text-xs uppercase tracking-widest bg-coral text-coral-ink px-4 py-2 border border-coral hover:bg-bg-invert hover:text-invert-ink hover:border-bg-invert transition-colors"
         >
           Get a Website — {SITE.priceDisplay}
         </a>

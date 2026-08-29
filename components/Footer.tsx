@@ -7,7 +7,7 @@ export default function Footer() {
         <div>
           <div className="font-display font-semibold text-xl">
             {SITE.name}
-            <span className="text-coral">.</span>
+            <span className="text-navy">.</span>
           </div>
           <p className="mt-3 text-ink-muted text-sm max-w-xs">
             Affordable, mobile-first websites for businesses across Kerala
@@ -23,20 +23,20 @@ export default function Footer() {
             href={`https://wa.me/${SITE.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-sm text-ink-muted hover:text-coral transition-colors"
+            className="block text-sm text-ink-muted hover:text-navy transition-colors"
           >
             WhatsApp — {SITE.phoneDisplay}
           </a>
           <a
             href={`tel:${SITE.phoneE164}`}
-            className="block text-sm text-ink-muted hover:text-coral transition-colors"
+            className="block text-sm text-ink-muted hover:text-navy transition-colors"
           >
             Call — {SITE.phoneDisplay}{" "}
             <span className="text-ink-faint">(available sometimes)</span>
           </a>
           <a
             href={`mailto:${SITE.email}`}
-            className="block text-sm text-ink-muted hover:text-coral transition-colors"
+            className="block text-sm text-ink-muted hover:text-navy transition-colors"
           >
             {SITE.email}
           </a>

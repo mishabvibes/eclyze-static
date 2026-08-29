@@ -71,7 +71,7 @@ export default function IntakeForm() {
           >
             {/* Basic Info */}
             <fieldset>
-              <legend className="font-mono text-[11px] uppercase tracking-widest text-coral mb-5">
+              <legend className="font-mono text-[11px] uppercase tracking-widest text-navy mb-5">
                 Basic Info
               </legend>
               <div className="grid md:grid-cols-2 gap-5">
@@ -89,7 +89,7 @@ export default function IntakeForm() {
 
             {/* Project Assets */}
             <fieldset>
-              <legend className="font-mono text-[11px] uppercase tracking-widest text-coral mb-5">
+              <legend className="font-mono text-[11px] uppercase tracking-widest text-navy mb-5">
                 Project Assets
               </legend>
               <Field
@@ -103,7 +103,7 @@ export default function IntakeForm() {
 
             {/* Functional Requirements */}
             <fieldset>
-              <legend className="font-mono text-[11px] uppercase tracking-widest text-coral mb-5">
+              <legend className="font-mono text-[11px] uppercase tracking-widest text-navy mb-5">
                 Functional Requirements
               </legend>
               <div className="flex flex-wrap gap-3">
@@ -117,7 +117,7 @@ export default function IntakeForm() {
                       className={`font-mono text-xs uppercase tracking-wider px-4 py-2 border transition-colors ${
                         active
                           ? "bg-navy text-invert-ink border-navy"
-                          : "border-line-strong text-ink-muted hover:border-coral hover:text-coral"
+                          : "border-line-strong text-ink-muted hover:border-navy hover:text-navy"
                       }`}
                     >
                       {opt}
@@ -129,14 +129,14 @@ export default function IntakeForm() {
 
             {/* Domain Strategy */}
             <fieldset>
-              <legend className="font-mono text-[11px] uppercase tracking-widest text-coral mb-5">
+              <legend className="font-mono text-[11px] uppercase tracking-widest text-navy mb-5">
                 Domain Strategy
               </legend>
               <select
                 name="domain"
                 defaultValue=""
                 required
-                className="w-full bg-bg border border-line-strong px-4 py-3 text-sm text-ink focus:outline-none focus:border-coral"
+                className="w-full bg-bg border border-line-strong px-4 py-3 text-sm text-ink focus:outline-none focus:border-navy"
               >
                 <option value="" disabled>
                   Select an option
@@ -152,21 +152,21 @@ export default function IntakeForm() {
 
             {/* Creative Brief */}
             <fieldset>
-              <legend className="font-mono text-[11px] uppercase tracking-widest text-coral mb-5">
+              <legend className="font-mono text-[11px] uppercase tracking-widest text-navy mb-5">
                 Creative Brief
               </legend>
               <textarea
                 name="brief"
                 rows={4}
                 placeholder="What does your business do, and what should this site achieve?"
-                className="w-full bg-bg border border-line-strong px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:border-coral resize-none"
+                className="w-full bg-bg border border-line-strong px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:border-navy resize-none"
               />
             </fieldset>
 
             <div>
               <button
                 type="submit"
-                className="font-mono text-sm uppercase tracking-widest bg-coral text-coral-ink px-6 py-3.5 border border-coral hover:bg-transparent hover:text-coral transition-colors"
+                className="font-mono text-sm uppercase tracking-widest bg-coral text-coral-ink px-6 py-3.5 border border-coral hover:bg-bg-invert hover:text-invert-ink hover:border-bg-invert transition-colors"
               >
                 Submit Project Brief →
               </button>
@@ -192,14 +192,14 @@ export default function IntakeForm() {
                 href={SITE.paymentLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-sm uppercase tracking-widest bg-coral text-coral-ink px-6 py-3.5 border border-coral hover:bg-transparent hover:text-coral transition-colors"
+                className="font-mono text-sm uppercase tracking-widest bg-coral text-coral-ink px-6 py-3.5 border border-coral hover:bg-bg-invert hover:text-invert-ink hover:border-bg-invert transition-colors"
               >
                 Pay Now — {SITE.priceDisplay}
               </a>
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
-                className="font-mono text-sm uppercase tracking-widest px-6 py-3.5 border border-line-strong text-ink hover:border-coral hover:text-coral transition-colors"
+                className="font-mono text-sm uppercase tracking-widest px-6 py-3.5 border border-line-strong text-ink hover:border-navy hover:text-navy transition-colors"
               >
                 Close
               </button>
@@ -226,13 +226,13 @@ function Field({
     <label className="block">
       <span className="block font-mono text-[11px] text-ink-faint mb-2">
         {label}
-        {required && <span className="text-coral"> *</span>}
+        {required && <span className="text-navy"> *</span>}
       </span>
       <input
         type={type}
         name={name}
         required={required}
-        className="w-full bg-bg border border-line-strong px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:border-coral"
+        className="w-full bg-bg border border-line-strong px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:border-navy"
       />
     </label>
   );

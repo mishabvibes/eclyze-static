@@ -38,7 +38,7 @@ export default function Standard() {
                 <span className="font-mono text-xs text-ink-faint">
                   {f.index} /
                 </span>
-                <span className="font-mono text-xs uppercase tracking-widest text-coral">
+                <span className="font-mono text-xs uppercase tracking-widest text-navy">
                   {f.tag}
                 </span>
               </div>

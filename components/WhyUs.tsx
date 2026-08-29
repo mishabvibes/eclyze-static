@@ -33,7 +33,7 @@ export default function WhyUs() {
                 <th className="py-4 pr-4 font-mono text-[11px] uppercase tracking-widest text-ink-faint font-normal">
                   &nbsp;
                 </th>
-                <th className="py-4 px-4 font-display font-semibold text-coral">
+                <th className="py-4 px-4 font-display font-semibold text-navy">
                   {SITE.name}
                 </th>
                 <th className="py-4 px-4 font-display font-medium text-ink-muted">

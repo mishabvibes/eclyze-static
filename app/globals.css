@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #faf7f1;
-  --bg-panel: #f1ebdd;
-  --bg-invert: #10182b;
-  --line: rgba(20, 22, 27, 0.12);
-  --line-strong: rgba(20, 22, 27, 0.24);
-  --ink: #14161b;
-  --ink-muted: #585c65;
-  --ink-faint: #8a8d95;
-  --coral: #ff5b35;
-  --navy: #1c3766;
-  --gold: #c9962f;
-  --coral-ink: #14161b;
-  --invert-ink: #f6f1e4;
+  --bg: #ffffff;
+  --bg-panel: #e4e4e1;
+  --bg-invert: #0b0b0e;
+  --line: rgba(11, 11, 14, 0.12);
+  --line-strong: rgba(11, 11, 14, 0.24);
+  --ink: #0b0b0e;
+  --ink-muted: #6b6b70;
+  --ink-faint: #9a9a9e;
+  --coral: #d4ff3d;
+  --navy: #5b4fe0;
+  --gold: #8f89ea;
+  --coral-ink: #0b0b0e;
+  --invert-ink: #ffffff;
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-body: "Inter", sans-serif;
@@ -60,21 +60,24 @@ body {
 .corner-brackets {
   position: relative;
 }
+
 .corner-brackets::before,
 .corner-brackets::after {
   content: "";
   position: absolute;
   width: 14px;
   height: 14px;
-  border: 1.5px solid var(--coral);
+  border: 1.5px solid var(--navy);
   opacity: 0.85;
 }
+
 .corner-brackets::before {
   top: -1px;
   left: -1px;
   border-right: none;
   border-bottom: none;
 }
+
 .corner-brackets::after {
   bottom: -1px;
   right: -1px;
@@ -85,24 +88,28 @@ body {
 .font-display {
   font-family: var(--font-display), sans-serif;
 }
+
 .font-mono {
   font-family: var(--font-mono), monospace;
 }
 
 ::selection {
   background: var(--coral);
-  color: var(--invert-ink);
+  color: var(--ink);
 }
 
 @keyframes pulse-dot {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.35;
   }
 }
+
 .animate-pulse-dot {
   animation: pulse-dot 1.8s ease-in-out infinite;
 }
@@ -111,6 +118,7 @@ body {
   html {
     scroll-behavior: auto;
   }
+
   .animate-pulse-dot {
     animation: none;
   }

@@ -28,7 +28,7 @@ export default function Hero() {
         <h1 className="font-display font-semibold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.05] tracking-tight max-w-4xl">
           A Website That Actually
           <br />
-          <span className="text-coral">Brings You Customers</span> — Live in
+          <span className="text-navy">Brings You Customers</span> — Live in
           5 Days.
         </h1>
 
@@ -43,7 +43,7 @@ export default function Hero() {
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <a
             href="#intake"
-            className="font-mono text-sm uppercase tracking-widest bg-coral text-coral-ink px-6 py-3.5 border border-coral hover:bg-transparent hover:text-coral transition-colors"
+            className="font-mono text-sm uppercase tracking-widest bg-coral text-coral-ink px-6 py-3.5 border border-coral hover:bg-bg-invert hover:text-invert-ink hover:border-bg-invert transition-colors"
           >
             Get Your Website Built →
           </a>
@@ -51,7 +51,7 @@ export default function Hero() {
             href={`https://wa.me/${SITE.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-sm uppercase tracking-widest px-6 py-3.5 border border-line-strong text-ink hover:border-coral hover:text-coral transition-colors"
+            className="font-mono text-sm uppercase tracking-widest px-6 py-3.5 border border-line-strong text-ink hover:border-navy hover:text-navy transition-colors"
           >
             Chat on WhatsApp
           </a>
