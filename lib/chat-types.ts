@@ -43,6 +43,11 @@ export interface ConversationLog {
   insights: ChatInsights[];         // one per assistant turn
   durationMs: number;               // how long the widget was open
   convertedTo: "whatsapp" | "form" | null;
+  // ID of the Discord message already posted for this session, if any.
+  // When present, the log endpoint edits that message instead of
+  // posting a new one, so re-opening/closing the widget never
+  // creates duplicate Discord messages for the same session.
+  discordMessageId?: string;
 }
 
 // ── Dynamic suggestion sets keyed by detected intent ─────────────────

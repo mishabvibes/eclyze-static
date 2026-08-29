@@ -9,7 +9,11 @@ const GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
 
 const MAX_MESSAGE_LENGTH = 400;
 const MAX_HISTORY_MESSAGES = 10;
-const MAX_OUTPUT_TOKENS = 500; // increased to fit structured response
+// Needs enough headroom for the full JSON envelope (reply + insights +
+// 3 suggestedFollowUps). Too low and Groq truncates mid-JSON, which
+// breaks parsing and used to leak the raw JSON into the chat — see
+// parseAiResponse() below for the extra safety net around that too.
+const MAX_OUTPUT_TOKENS = 700;
 
 // ── Rate limiter (in-memory, resets on cold start) ──────────────────
 const WINDOW_MS = 5 * 60 * 1000;
@@ -43,6 +47,16 @@ You don't just answer questions — you guide visitors toward becoming clients. 
 • Live portfolio: dihanafebin.vercel.app (portfolio), aicamal.app (donation platform), rahathayurvedic.vercel.app (local business)
 • Limited capacity: we take on a handful of projects each week to maintain quality
 • To start: fill the "Start Project" form on site, or message on WhatsApp
+
+═══ SCOPE — WHAT THE ₹9,999 FLAT FEE COVERS ═══
+The flat fee is for a STATIC, mobile-first informational/brochure website only. It does NOT include:
+• E-commerce, online stores, shopping carts, or payment/checkout integration
+• User accounts, logins, or membership areas
+• Custom dashboards, admin panels, or databases
+• Booking/reservation systems with live availability, or any app-like dynamic backend
+• Anything requiring ongoing server-side logic beyond a simple contact/WhatsApp button
+
+If a visitor asks for any of the above, or anything that sounds like an online store, custom web app, or software product — do NOT say it's included in the ₹9,999 flat fee, and do NOT promise it can be delivered in ${SITE.deliveryDays} days at that price. These are custom projects with their own separate scope, timeline, and pricing that ${SITE.name} would need to quote individually after understanding their requirements. Be upfront and honest about this, then guide them to describe their requirements over WhatsApp so a proper custom quote can be worked out. Never invent a price or timeline for custom/dynamic work.
 
 ═══ FAQ KNOWLEDGE ═══
 ${faqText}
@@ -97,6 +111,7 @@ You MUST respond with valid JSON only. No text outside the JSON. Format:
     "contextualButton": { "label": "Button Label", "url": "#url" } // OPTIONAL: Include only if highly relevant
   }
 }
+IMPORTANT: There is a limited output budget. Always finish the ENTIRE JSON object with the closing brace — a cut-off, incomplete response is unusable. Keep "reply" to 2–4 sentences and each suggestedFollowUp under 8 words so the full object comfortably fits.
 
 ═══ CONVERSATION RULES ═══
 • Keep replies to 2–4 sentences. Be warm, not corporate. Write like a helpful friend who happens to know about web development.
@@ -105,6 +120,7 @@ You MUST respond with valid JSON only. No text outside the JSON. Format:
 • In "awareness" stage, be curious about their business — ask what they do, it builds rapport.
 • Never claim to be a human. You're ${SITE.name}'s AI concierge.
 • Don't discuss topics unrelated to ${SITE.name} or websites — politely redirect.
+• Honesty about scope beats closing the deal. If someone asks for e-commerce, logins, dashboards, or any dynamic/custom feature, say plainly that it's outside the ₹9,999 static-site flat fee and needs a separate custom quote — never stretch the flat fee or timeline to cover it just to keep the conversation moving.
 • For "suggestedFollowUps", provide 3 short questions the user might naturally ask next, based on their intent and conversation stage. Make them feel like natural progressions of the conversation.
 • Never use markdown formatting in the "reply" field — plain text only.`;
 }
@@ -122,6 +138,36 @@ const FALLBACK_INSIGHTS: ChatInsights = {
     "Can I see examples?",
   ],
 };
+
+// A safe, friendly message shown when the AI's response couldn't be
+// understood at all — this should NEVER be raw JSON or model
+// scaffolding, only ever a normal sentence a visitor would expect.
+const UNPARSEABLE_FALLBACK_REPLY =
+  "Sorry, I got a bit tangled up putting that into words — could you try asking again, or message us on WhatsApp?";
+
+// Best-effort recovery of just the "reply" field's text from a
+// response that failed to parse as full JSON — most commonly because
+// Groq's output got cut off mid-object by the token limit after the
+// "reply" text itself was already complete. Returns null if no clean
+// reply string can be recovered.
+function extractReplyField(raw: string): string | null {
+  const match = raw.match(/"reply"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+  if (!match) return null;
+  try {
+    // Reuse JSON's own string parsing to correctly unescape \n, \", etc.
+    const value = JSON.parse(`"${match[1]}"`);
+    return typeof value === "string" ? value.trim() : null;
+  } catch {
+    return null;
+  }
+}
+
+// A recovered/parsed reply should read like a normal sentence — if it
+// still contains JSON scaffolding (braces, or a stray "insights" key),
+// something went wrong upstream and it must never reach the visitor.
+function looksLikeLeakedJson(text: string): boolean {
+  return /[{}]/.test(text) || /"insights"\s*:/.test(text);
+}
 
 // ── Parse the structured AI response ────────────────────────────────
 function parseAiResponse(raw: string): {
@@ -148,10 +194,16 @@ function parseAiResponse(raw: string): {
 
     const parsed = JSON.parse(jsonStr);
 
-    const reply =
+    let reply =
       typeof parsed.reply === "string" && parsed.reply.trim()
         ? parsed.reply.trim()
-        : raw.trim();
+        : "";
+
+    // Guard even the success path: never let raw JSON scaffolding
+    // through as visible chat text.
+    if (!reply || looksLikeLeakedJson(reply)) {
+      reply = UNPARSEABLE_FALLBACK_REPLY;
+    }
 
     const validIntents: BuyerIntent[] = [
       "price_sensitive",
@@ -177,36 +229,72 @@ function parseAiResponse(raw: string): {
         : "awareness",
       suggestedFollowUps: Array.isArray(parsed.insights?.suggestedFollowUps)
         ? parsed.insights.suggestedFollowUps
-            .filter((s: unknown) => typeof s === "string")
-            .slice(0, 3)
+          .filter((s: unknown) => typeof s === "string")
+          .slice(0, 3)
         : FALLBACK_INSIGHTS.suggestedFollowUps,
       contextualButton:
         parsed.insights?.contextualButton?.label &&
-        parsed.insights?.contextualButton?.url
+          parsed.insights?.contextualButton?.url
           ? {
-              label: String(parsed.insights.contextualButton.label),
-              url: String(parsed.insights.contextualButton.url),
-            }
+            label: String(parsed.insights.contextualButton.label),
+            url: String(parsed.insights.contextualButton.url),
+          }
           : undefined,
     };
 
     return { reply, insights };
   } catch {
-    // Model didn't return valid JSON — use the raw text as the reply
-    return { reply: raw.trim(), insights: FALLBACK_INSIGHTS };
+    // Full JSON parse failed — most likely a truncated response (hit
+    // MAX_OUTPUT_TOKENS mid-object). Try to salvage just the "reply"
+    // text; if that's not possible or it still looks like JSON
+    // scaffolding, fall back to a clean, human message rather than
+    // ever showing the visitor raw/broken JSON.
+    const recovered = extractReplyField(raw);
+    const reply =
+      recovered && !looksLikeLeakedJson(recovered)
+        ? recovered
+        : UNPARSEABLE_FALLBACK_REPLY;
+
+    return { reply, insights: FALLBACK_INSIGHTS };
   }
 }
 
-// ── Fire-and-forget webhook log ─────────────────────────────────────
-async function logToWebhook(payload: Record<string, unknown>) {
+// ── Fire-and-forget per-message webhook ping ────────────────────────
+// A lightweight, real-time "someone's chatting" ping — separate from
+// the full end-of-session summary posted by /api/chat/log. Sent as
+// plain Discord `content` (not an embed) so it stays visually small
+// and distinct from the session summary.
+type WebhookPing = {
+  sessionId: string;
+  userMessage: string;
+  intent: string;
+  confidence: string;
+  buyerStage: string;
+  messageCount: number;
+};
+
+async function logToWebhook(entry: WebhookPing) {
   const webhookUrl = process.env.WEBHOOK_URL;
   if (!webhookUrl) return;
+
+  const stageEmoji =
+    entry.buyerStage === "decision"
+      ? "🟢"
+      : entry.buyerStage === "consideration"
+        ? "🟡"
+        : "⚪";
+
+  const snippet = entry.userMessage.slice(0, 140);
+  const content = `${stageEmoji} \`${entry.sessionId.slice(0, 8)}\` — **${entry.intent.replace(
+    "_",
+    " "
+  )}** (${entry.confidence}) · msg #${entry.messageCount} — "${snippet}"`;
 
   try {
     await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ content }),
     });
   } catch {
     // Silently fail — logging should never break the chat
@@ -316,9 +404,7 @@ export async function POST(req: NextRequest) {
     // Fire-and-forget: log this exchange for sales intelligence
     const lastUserMsg = cleaned.filter((m) => m.role === "user").pop();
     logToWebhook({
-      type: "chat_exchange",
       sessionId,
-      timestamp: new Date().toISOString(),
       userMessage: lastUserMsg?.content ?? "",
       intent: insights.intent,
       confidence: insights.confidence,

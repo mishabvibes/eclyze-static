@@ -8,6 +8,15 @@ import type { ConversationLog } from "@/lib/chat-types";
  * inactivity. Sends the full conversation transcript + accumulated
  * insights to the configured webhook (Discord, Google Sheets, etc.).
  *
+ * A visitor may open/close the widget several times in one session
+ * (send a message, close, reopen, send another, close again...).
+ * To avoid posting a new, overlapping Discord message every single
+ * time, this endpoint EDITS the existing message for that session
+ * once one has been created — the client sends back the
+ * `discordMessageId` it received on the previous log call. Only the
+ * very first log of a session creates a new message; every log after
+ * that updates it in place.
+ *
  * This endpoint is fire-and-forget from the client's perspective —
  * errors are swallowed so logging never degrades the user experience.
  */
@@ -63,8 +72,13 @@ export async function POST(req: NextRequest) {
 
   // ── Format for Discord webhook ────────────────────────────────────
   const embed = {
-    title: "🧠 New Chat Session",
-    color: hottestStage === "decision" ? 0x22c55e : hottestStage === "consideration" ? 0xeab308 : 0x6b7280,
+    title: "🧠 Chat Session",
+    color:
+      hottestStage === "decision"
+        ? 0x22c55e
+        : hottestStage === "consideration"
+        ? 0xeab308
+        : 0x6b7280,
     fields: [
       {
         name: "Session",
@@ -100,24 +114,62 @@ export async function POST(req: NextRequest) {
         inline: false,
       },
     ],
-    timestamp: log.timestamp,
+    // Keep a stable "last updated" indicator so an edited message
+    // still shows fresh info in Discord's timestamp footer.
+    timestamp: new Date().toISOString(),
+    footer: { text: "Started" },
   };
 
+  const payload = { embeds: [embed] };
+  const existingId =
+    typeof log.discordMessageId === "string" && log.discordMessageId
+      ? log.discordMessageId
+      : undefined;
+
   try {
-    await fetch(webhookUrl, {
+    // ── Session already has a Discord message → edit it in place ────
+    if (existingId) {
+      const editRes = await fetch(
+        `${webhookUrl}/messages/${existingId}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (editRes.ok) {
+        return NextResponse.json({ ok: true, discordMessageId: existingId });
+      }
+      // Edit failed (e.g. message manually deleted) — fall through
+      // and create a fresh message below.
+    }
+
+    // ── First log for this session → create a new message ───────────
+    // `?wait=true` makes Discord return the created message (with its
+    // id) so we can edit it on subsequent closes instead of duplicating.
+    const createUrl = webhookUrl.includes("?")
+      ? `${webhookUrl}&wait=true`
+      : `${webhookUrl}?wait=true`;
+
+    const createRes = await fetch(createUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        // Discord-style payload (also works for generic webhooks)
-        embeds: [embed],
-        // Include the raw log for non-Discord consumers
-        content: undefined,
-        _rawLog: log,
-      }),
+      body: JSON.stringify(payload),
+    });
+
+    if (!createRes.ok) {
+      const errBody = await createRes.text();
+      console.error(`Discord webhook error [${createRes.status}]:`, errBody);
+      return NextResponse.json({ ok: true });
+    }
+
+    const created = await createRes.json().catch(() => null);
+    return NextResponse.json({
+      ok: true,
+      discordMessageId: typeof created?.id === "string" ? created.id : undefined,
     });
   } catch (err) {
     console.error("Webhook log failed:", err);
+    return NextResponse.json({ ok: true });
   }
-
-  return NextResponse.json({ ok: true });
 }
