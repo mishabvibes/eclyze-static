@@ -44,7 +44,7 @@ export default function Hero() {
             href="#intake"
             className="font-mono text-sm uppercase tracking-widest bg-coral text-coral-ink px-6 py-3.5 border border-coral hover:bg-bg-invert hover:text-invert-ink hover:border-bg-invert transition-colors"
           >
-            Get Your Website Built →
+            Get Your Website Built
           </a>
           <a
             href={`https://wa.me/${SITE.whatsappNumber}`}
