@@ -1,12 +1,6 @@
 import { SITE } from "@/lib/site-config";
 
 export default function Hero() {
-  const buildStages = [
-    { range: "Day 1", label: "Brief" },
-    { range: "Day 2–3", label: "Build" },
-    { range: "Day 4", label: "Review" },
-    { range: "Day 5", label: "Launch" },
-  ];
 
   const trustPoints = [
     { label: "Flat Fee", value: SITE.priceDisplay },
@@ -74,32 +68,6 @@ export default function Hero() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Process overview — signature element, no implied progress */}
-        <div className="mt-8 border border-line bg-bg-panel/50 px-6 pt-7 pb-6">
-          <div className="text-ink-faint text-[11px] uppercase tracking-[0.2em] font-mono mb-7">
-            How Your Site Gets Built
-          </div>
-          <div className="relative flex justify-between">
-            <div className="absolute top-[5px] left-0 right-0 h-px bg-line-strong" />
-            {buildStages.map((s) => (
-              <div
-                key={s.label}
-                className="relative flex flex-col items-center gap-3 flex-1"
-              >
-                <span className="w-[11px] h-[11px] rounded-full border-2 border-coral bg-bg" />
-                <div className="text-center">
-                  <div className="text-ink text-[13px] font-medium">
-                    {s.label}
-                  </div>
-                  <div className="text-ink-faint text-[10px] font-mono uppercase tracking-wide mt-0.5">
-                    {s.range}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
