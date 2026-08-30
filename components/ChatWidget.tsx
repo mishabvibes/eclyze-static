@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { SITE } from "@/lib/site-config";
 import type {
   ChatInsights,
@@ -202,7 +203,7 @@ export default function ChatWidget() {
             headers: { "Content-Type": "application/json" },
             body,
             keepalive: true,
-          }).catch(() => { });
+          }).catch(() => {});
         }
         return;
       }
@@ -221,7 +222,7 @@ export default function ChatWidget() {
             saveSession(messages, allInsights, sessionId, openedAt, data.discordMessageId);
           }
         })
-        .catch(() => { });
+        .catch(() => {});
     },
     [messages, allInsights, sessionId, openedAt, convertedTo]
   );
@@ -347,8 +348,9 @@ export default function ChatWidget() {
       <div
         aria-hidden="true"
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-40 bg-bg-invert/40 transition-opacity duration-200 sm:hidden ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
+        className={`fixed inset-0 z-40 bg-bg-invert/40 transition-opacity duration-200 sm:hidden ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
       />
 
       <div
@@ -357,10 +359,11 @@ export default function ChatWidget() {
         role="dialog"
         aria-modal="true"
         aria-label={`${SITE.name} AI chat assistant`}
-        className={`fixed z-50 inset-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-[min(24rem,calc(100vw-2rem))] h-[100dvh] sm:h-auto sm:max-h-[min(38rem,calc(100dvh-7rem))] transition-all duration-200 ease-out ${open
+        className={`fixed z-50 inset-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-[min(24rem,calc(100vw-2rem))] h-[100dvh] sm:h-auto sm:max-h-[min(38rem,calc(100dvh-7rem))] transition-all duration-200 ease-out ${
+          open
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-4 sm:translate-y-2 pointer-events-none"
-          }`}
+        }`}
       >
         <div className="corner-brackets sm:border border-bg-invert bg-bg-invert text-invert-ink flex flex-col shadow-2xl w-full h-full sm:max-h-[min(38rem,calc(100dvh-7rem))]">
           {/* Header */}
@@ -477,8 +480,8 @@ export default function ChatWidget() {
             <div className="px-4 sm:px-5 py-3 border-t border-line-strong/50 flex items-center gap-2 flex-wrap shrink-0">
               {isDecisionStage ? (
                 <>
-                  <a
-                    href="#intake"
+                  <Link
+                    href="/#intake"
                     onClick={() => {
                       setConvertedTo("form");
                       setOpen(false);
@@ -486,7 +489,7 @@ export default function ChatWidget() {
                     className="font-mono text-[10px] uppercase tracking-wider px-3 py-2 bg-coral text-coral-ink border border-coral hover:bg-invert-ink hover:text-invert-ink hover:border-invert-ink transition-colors touch-manipulation min-h-[36px] flex items-center"
                   >
                     Start Project →
-                  </a>
+                  </Link>
                   <a
                     href={`https://wa.me/${SITE.whatsappNumber}`}
                     target="_blank"
@@ -502,8 +505,8 @@ export default function ChatWidget() {
                   <span className="font-mono text-[9px] uppercase tracking-wider text-invert-ink/40 w-full sm:w-auto">
                     Ready to go?
                   </span>
-                  <a
-                    href="#intake"
+                  <Link
+                    href="/#intake"
                     onClick={() => {
                       setConvertedTo("form");
                       setOpen(false);
@@ -511,7 +514,7 @@ export default function ChatWidget() {
                     className="font-mono text-[10px] uppercase tracking-wider px-3 py-2 border border-line-strong text-invert-ink/70 hover:border-coral hover:text-coral transition-colors touch-manipulation min-h-[36px] flex items-center"
                   >
                     Fill the Brief
-                  </a>
+                  </Link>
                   <a
                     href={`https://wa.me/${SITE.whatsappNumber}`}
                     target="_blank"

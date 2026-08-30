@@ -1,41 +1,45 @@
+import Link from "next/link";
 import { SITE } from "@/lib/site-config";
 
 export default function Header() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-line bg-bg/90 backdrop-blur-md">
       <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-        <a
-          href="#top"
+        <Link
+          href="/"
           className="font-display font-semibold text-lg tracking-tight text-ink"
         >
           {SITE.name}
           <span className="text-navy">.</span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-ink-muted">
-          <a href="#standard" className="hover:text-navy transition-colors">
+          <Link href="/#standard" className="hover:text-navy transition-colors">
             Why Eclyze
-          </a>
-          <a href="#work" className="hover:text-navy transition-colors">
+          </Link>
+          <Link href="/#work" className="hover:text-navy transition-colors">
             Work
-          </a>
-          <a href="#offer" className="hover:text-navy transition-colors">
+          </Link>
+          <Link href="/#offer" className="hover:text-navy transition-colors">
             Pricing
-          </a>
-          <a href="#faq" className="hover:text-navy transition-colors">
+          </Link>
+          <Link href="/#faq" className="hover:text-navy transition-colors">
             FAQ
-          </a>
-          <a href="#intake" className="hover:text-navy transition-colors">
+          </Link>
+          <Link href="/blog" className="hover:text-navy transition-colors">
+            Blog
+          </Link>
+          <Link href="/#intake" className="hover:text-navy transition-colors">
             Start Project
-          </a>
+          </Link>
         </nav>
 
-        <a
-          href="#intake"
+        <Link
+          href="/#intake"
           className="font-mono text-xs uppercase tracking-widest bg-coral text-coral-ink px-4 py-2 border border-coral hover:bg-bg-invert hover:text-invert-ink hover:border-bg-invert transition-colors"
         >
           Get a Website — {SITE.priceDisplay}
-        </a>
+        </Link>
       </div>
     </header>
   );
