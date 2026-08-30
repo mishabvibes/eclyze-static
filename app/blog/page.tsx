@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
+import BlogVisual from "@/components/BlogVisual";
 import { getAllPosts } from "@/lib/blog";
 import { SITE } from "@/lib/site-config";
 
@@ -48,31 +49,36 @@ export default function BlogIndex() {
               New posts are on the way check back soon.
             </p>
           ) : (
-            <div className="grid md:grid-cols-2 gap-px bg-line border border-line">
+            <div className="flex flex-col gap-6">
               {posts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group bg-bg p-6 flex flex-col hover:bg-bg-panel transition-colors"
+                  className="group border border-line bg-bg flex flex-col md:flex-row hover:border-navy transition-colors overflow-hidden"
                 >
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
-                    {new Date(post.date).toLocaleDateString("en-IN", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                    {" · "}
-                    {post.readingTime}
-                  </span>
-                  <h2 className="mt-3 font-display font-semibold text-lg leading-snug text-ink group-hover:text-navy transition-colors">
-                    {post.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-ink-muted leading-relaxed flex-1">
-                    {post.description}
-                  </p>
-                  <span className="mt-4 font-mono text-[11px] uppercase tracking-widest text-coral">
-                    Read →
-                  </span>
+                  <div className="p-6 md:p-8 flex flex-col justify-center md:w-[55%] order-2 md:order-1">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
+                      {new Date(post.date).toLocaleDateString("en-IN", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                      {" · "}
+                      {post.readingTime}
+                    </span>
+                    <h2 className="mt-3 font-display font-semibold text-xl md:text-2xl leading-snug text-ink group-hover:text-navy transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="mt-3 text-sm text-ink-muted leading-relaxed">
+                      {post.description}
+                    </p>
+                    <span className="mt-5 font-mono text-[11px] uppercase tracking-widest text-coral">
+                      Read →
+                    </span>
+                  </div>
+                  <div className="h-56 md:h-auto md:w-[45%] order-1 md:order-2 bg-bg-panel">
+                    <BlogVisual slug={post.slug} />
+                  </div>
                 </Link>
               ))}
             </div>
