@@ -114,11 +114,10 @@ export default function IntakeForm() {
                       type="button"
                       key={opt}
                       onClick={() => toggleRequirement(opt)}
-                      className={`font-mono text-xs uppercase tracking-wider px-4 py-2 border transition-colors ${
-                        active
-                          ? "bg-navy text-invert-ink border-navy"
-                          : "border-line-strong text-ink-muted hover:border-navy hover:text-navy"
-                      }`}
+                      className={`font-mono text-xs uppercase tracking-wider px-4 py-2 border transition-colors ${active
+                        ? "bg-navy text-invert-ink border-navy"
+                        : "border-line-strong text-ink-muted hover:border-navy hover:text-navy"
+                        }`}
                     >
                       {opt}
                     </button>
@@ -187,7 +186,7 @@ export default function IntakeForm() {
                 type="submit"
                 className="font-mono text-sm uppercase tracking-widest bg-coral text-coral-ink px-6 py-3.5 border border-coral hover:bg-bg-invert hover:text-invert-ink hover:border-bg-invert transition-colors"
               >
-                Submit Project Brief →
+                Submit Project Brief
               </button>
               <p className="mt-3 font-mono text-[11px] text-ink-faint">
                 We&apos;ll open WhatsApp with your brief pre-filled hit
