@@ -3,7 +3,7 @@ import { SITE } from "@/lib/site-config";
 export const faqs = [
   {
     q: "How much does a website cost in Kerala?",
-    a: `Website pricing in Kerala usually ranges from a few thousand rupees for a DIY builder to ₹25,000+ for a full agency build. ${SITE.name} offers a flat, all-inclusive fee of ${SITE.priceDisplay} for a professional, mobile-first website — no hidden charges beyond domain registration.`,
+    a: `Website pricing in Kerala usually ranges from a few thousand rupees for a DIY builder to ₹25,000+ for a full agency build. ${SITE.name} offers a flat, all-inclusive fee of ${SITE.priceDisplay} for a professional, mobile-first website no hidden charges beyond domain registration.`,
   },
   {
     q: "How fast can you actually deliver a website?",
@@ -11,15 +11,15 @@ export const faqs = [
   },
   {
     q: "Do I need to buy hosting and a domain separately?",
-    a: "Domain registration is billed separately at cost, since prices vary by domain name and extension. If you don't have a domain yet, we'll help you pick and register one — or set you up on a free Eclyze subdomain to start.",
+    a: "Domain registration is billed separately at cost, since prices vary by domain name and extension. If you don't have a domain yet, we'll help you pick and register one or set you up on a free Eclyze subdomain to start.",
   },
   {
     q: "Will my website work well on mobile phones?",
-    a: "Yes — every Eclyze website is built mobile-first, since most customers in Kerala and across India browse and search on their phones first.",
+    a: "Yes every Eclyze website is built mobile-first, since most customers in Kerala and across India browse and search on their phones first.",
   },
   {
     q: "Will my website show up on Google search?",
-    a: "Every site ships with on-page SEO basics done right: clean semantic HTML, fast load times, proper page titles and meta descriptions, and mobile-friendliness — the technical foundation Google looks for. Ranking well over time also depends on your content, competition, and location, but the groundwork is built in from day one.",
+    a: "Every site ships with on-page SEO basics done right: clean semantic HTML, fast load times, proper page titles and meta descriptions, and mobile-friendliness the technical foundation Google looks for. Ranking well over time also depends on your content, competition, and location, but the groundwork is built in from day one.",
   },
   {
     q: "Do you work with businesses outside Kerala?",

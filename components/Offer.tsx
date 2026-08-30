@@ -25,7 +25,7 @@ export default function Offer() {
           One flat fee. Five working days. No surprises.
         </h2>
         <p className="mt-4 max-w-xl text-ink-muted leading-relaxed">
-          A complete, launch-ready website — content structure, layout,
+          A complete, launch-ready website content structure, layout,
           mobile optimization, on-page SEO, and deployment included. Domain
           registration is billed separately at cost, so you always know
           exactly what you&apos;re paying for.

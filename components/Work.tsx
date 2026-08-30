@@ -113,7 +113,7 @@ export default function Work() {
           Real builds. Real businesses. Live now.
         </h2>
         <p className="mt-4 max-w-xl text-ink-muted leading-relaxed">
-          Every project below is a live website we shipped — mobile-first,
+          Every project below is a live website we shipped mobile-first,
           SEO-ready, and built to convert.
         </p>
 

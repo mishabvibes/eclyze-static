@@ -1,7 +1,12 @@
 import { SITE } from "@/lib/site-config";
 
 export default function Hero() {
-  const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"];
+  const buildStages = [
+    { range: "Day 1", label: "Brief" },
+    { range: "Day 2–3", label: "Build" },
+    { range: "Day 4", label: "Review" },
+    { range: "Day 5", label: "Launch" },
+  ];
 
   const trustPoints = [
     { label: "Flat Fee", value: SITE.priceDisplay },
@@ -13,7 +18,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden border-b border-line bg-[linear-gradient(90deg,theme(colors.line)_1px,transparent_1px)] bg-[size:60px_100%]"
+      className="relative overflow-hidden border-b border-line bg-[linear-gradient(90deg,theme(colors.line)_1px,transparent_1px)] bg-[size:80px_100%]"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-bg-panel/70 via-transparent to-bg pointer-events-none" />
 
@@ -71,33 +76,29 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Build status strip — signature element */}
-        <div className="mt-8 border border-line bg-bg-panel/50 px-6 py-6">
-          <div className="flex items-center justify-between mb-5">
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-faint">
-              Build status
-            </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-navy">
-              Day 1 → Day 5
-            </span>
+        {/* Process overview — signature element, no implied progress */}
+        <div className="mt-8 border border-line bg-bg-panel/50 px-6 pt-7 pb-6">
+          <div className="text-ink-faint text-[11px] uppercase tracking-[0.2em] font-mono mb-7">
+            How Your Site Gets Built
           </div>
-          <div className="relative">
-            <div className="h-px w-full bg-line-strong" />
-            <div className="h-px w-1/5 bg-coral absolute top-0 left-0" />
-            <div className="flex justify-between mt-[-1px]">
-              {days.map((d, i) => (
-                <div key={d} className="flex flex-col items-center gap-2">
-                  <span
-                    className={`w-2 h-2 rotate-45 ${
-                      i === 0 ? "bg-coral" : "bg-line-strong"
-                    }`}
-                  />
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-ink-faint">
-                    {d}
-                  </span>
+          <div className="relative flex justify-between">
+            <div className="absolute top-[5px] left-0 right-0 h-px bg-line-strong" />
+            {buildStages.map((s) => (
+              <div
+                key={s.label}
+                className="relative flex flex-col items-center gap-3 flex-1"
+              >
+                <span className="w-[11px] h-[11px] rounded-full border-2 border-coral bg-bg" />
+                <div className="text-center">
+                  <div className="text-ink text-[13px] font-medium">
+                    {s.label}
+                  </div>
+                  <div className="text-ink-faint text-[10px] font-mono uppercase tracking-wide mt-0.5">
+                    {s.range}
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -60,7 +60,7 @@ export default function IntakeForm() {
         <p className="mt-4 max-w-xl text-ink-muted leading-relaxed">
           Five minutes of your time gets the build started. The more
           specific you are, the closer day one gets to your finished site.
-          Prefer to just talk it through? WhatsApp us — that&apos;s the
+          Prefer to just talk it through? WhatsApp us that&apos;s the
           fastest way to reach the team.
         </p>
 
@@ -97,7 +97,7 @@ export default function IntakeForm() {
                 name="assets"
               />
               <p className="mt-2 font-mono text-[11px] text-ink-faint">
-                No assets yet? Leave this blank — we&apos;ll follow up.
+                No assets yet? Leave this blank we&apos;ll follow up.
               </p>
             </fieldset>
 
@@ -190,7 +190,7 @@ export default function IntakeForm() {
                 Submit Project Brief →
               </button>
               <p className="mt-3 font-mono text-[11px] text-ink-faint">
-                We&apos;ll open WhatsApp with your brief pre-filled — hit
+                We&apos;ll open WhatsApp with your brief pre-filled hit
                 send there to confirm. WhatsApp is the fastest way to reach
                 us; you can also call {SITE.phoneDisplay}.
               </p>

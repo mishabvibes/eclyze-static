@@ -11,7 +11,7 @@ export default function Footer() {
           </div>
           <p className="mt-3 text-ink-muted text-sm max-w-xs">
             Affordable, mobile-first websites for businesses across Kerala
-            and India — delivered in 5 days flat.
+            and India delivered in 5 days flat.
           </p>
         </div>
 
