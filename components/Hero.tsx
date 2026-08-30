@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden border-b border-line grid-dots"
+      className="relative overflow-hidden border-b border-line bg-[linear-gradient(90deg,theme(colors.line)_1px,transparent_1px)] bg-[size:60px_100%]"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-bg-panel/70 via-transparent to-bg pointer-events-none" />
 
