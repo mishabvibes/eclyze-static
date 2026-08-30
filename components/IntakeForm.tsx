@@ -132,22 +132,41 @@ export default function IntakeForm() {
               <legend className="font-mono text-[11px] uppercase tracking-widest text-navy mb-5">
                 Domain Strategy
               </legend>
-              <select
-                name="domain"
-                defaultValue=""
-                required
-                className="w-full bg-bg border border-line-strong px-4 py-3 text-sm text-ink focus:outline-none focus:border-navy"
-              >
-                <option value="" disabled>
-                  Select an option
-                </option>
-                <option value="Custom Domain (Paid, billed separately)">
-                  Custom Domain (Paid, billed separately)
-                </option>
-                <option value="Free Eclyze Subdomain">
-                  Free Subdomain
-                </option>
-              </select>
+              <div className="relative">
+                <select
+                  name="domain"
+                  defaultValue=""
+                  required
+                  className="w-full appearance-none bg-bg border border-line-strong px-4 py-3 pr-11 text-sm text-ink cursor-pointer transition-colors hover:border-navy/50 focus:outline-none focus:border-navy"
+                >
+                  <option value="" disabled>
+                    Select an option
+                  </option>
+                  <option value="Custom Domain (Paid, billed separately)">
+                    Custom Domain (Paid, billed separately)
+                  </option>
+                  <option value="Free Eclyze Subdomain">
+                    Free Subdomain
+                  </option>
+                </select>
+                <svg
+                  className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2"
+                  width="12"
+                  height="8"
+                  viewBox="0 0 12 8"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M1 1.5L6 6.5L11 1.5"
+                    stroke="currentColor"
+                    className="text-ink-faint"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
             </fieldset>
 
             {/* Creative Brief */}

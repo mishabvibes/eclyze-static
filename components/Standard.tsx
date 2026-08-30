@@ -9,13 +9,13 @@ const features = [
     index: "02",
     tag: "Search-Ready",
     title: "Found on Google, not just online.",
-    desc: "Clean semantic markup, fast load times, and proper metadata from day one — the technical SEO foundation most budget websites skip.",
+    desc: "Clean semantic markup, fast load times, and proper metadata from day one the technical SEO foundation most budget websites skip.",
   },
   {
     index: "03",
     tag: "Conversion-Ready",
     title: "Designed to close, not just look good.",
-    desc: "Every section is placed with intent — CTAs, trust signals, and a clear path to WhatsApp or a call, tuned to turn visits into leads.",
+    desc: "Every section is placed with intent CTAs, trust signals, and a clear path to WhatsApp or a call, tuned to turn visits into leads.",
   },
 ];
 

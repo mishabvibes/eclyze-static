@@ -28,13 +28,13 @@ export default function Hero() {
         <h1 className="font-display font-semibold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.05] tracking-tight max-w-4xl">
           A Website That Actually
           <br />
-          <span className="text-navy">Brings You Customers</span> — Live in
+          <span className="text-navy">Brings You Customers</span> Live in
           5 Days.
         </h1>
 
         <p className="mt-6 max-w-xl text-ink-muted text-lg leading-relaxed">
           {SITE.name} builds fast, mobile-first, search-friendly websites for
-          small businesses across Kerala and India — no bloated CMS, no
+          small businesses across Kerala and India no bloated CMS, no
           hidden costs, no long agency timelines. Just a professional site
           for a flat fee of{" "}
           <span className="text-ink font-medium">{SITE.priceDisplay}</span>.

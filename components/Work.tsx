@@ -13,7 +13,7 @@ const projects = [
     name: "AIC Amal",
     category: "Donation Platform",
     blurb:
-      "A full-featured donation platform for Akode Islamic Centre — supporting community campaigns, agent portals, and seamless UPI payments.",
+      "A full-featured donation platform for Akode Islamic Centre supporting community campaigns, agent portals, and seamless UPI payments.",
     url: "https://aicamal.app",
     displayUrl: "aicamal.app",
     accent: "coral" as const,
@@ -23,7 +23,7 @@ const projects = [
     name: "Rahath Ayurvedic",
     category: "Local Business",
     blurb:
-      "SEO-optimised storefront for a traditional Ayurvedic shop in Mannarkkad — bilingual content, Google Reviews, and enquiry-first UX.",
+      "SEO-optimised storefront for a traditional Ayurvedic shop in Mannarkkad bilingual content, Google Reviews, and enquiry-first UX.",
     url: "https://rahathayurvedic.vercel.app",
     displayUrl: "rahathayurvedic.vercel.app",
     accent: "navy" as const,

@@ -15,7 +15,7 @@ import { SITE } from "@/lib/site-config";
 const title =
   "Affordable Website Development in Kerala & India | Eclyze";
 const description =
-  "Eclyze builds fast, mobile-first, SEO-ready websites for small businesses in Kerala and across India — flat fee of ₹9,999, delivered in 5 days. No hidden costs, no long agency timelines.";
+  "Eclyze builds fast, mobile-first, SEO-ready websites for small businesses in Kerala and across India flat fee of ₹9,999, delivered in 5 days. No hidden costs, no long agency timelines.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.domain),

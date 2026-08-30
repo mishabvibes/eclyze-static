@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --bg-panel: #e4e4e1;
-  --bg-invert: #0b0b0e;
-  --line: rgba(11, 11, 14, 0.12);
-  --line-strong: rgba(11, 11, 14, 0.24);
-  --ink: #0b0b0e;
-  --ink-muted: #6b6b70;
-  --ink-faint: #9a9a9e;
-  --coral: #d4ff3d;
-  --navy: #5b4fe0;
-  --gold: #8f89ea;
-  --coral-ink: #0b0b0e;
-  --invert-ink: #ffffff;
+  --bg: #FAF7F1;
+  --bg-panel: #F1EBDF;
+  --bg-invert: #10182B;
+  --line: rgba(20, 22, 27, 0.12);
+  --line-strong: rgba(20, 22, 27, 0.24);
+  --ink: #14161B;
+  --ink-muted: #585C65;
+  --ink-faint: #8A8D95;
+  --coral: #FF5B35;
+  --navy: #1C3766;
+  --gold: #C9962F;
+  --coral-ink: #14161B;
+  --invert-ink: #F6F1E4;
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-body: "Inter", sans-serif;

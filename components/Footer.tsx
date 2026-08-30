@@ -23,16 +23,21 @@ export default function Footer() {
             href={`https://wa.me/${SITE.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-sm text-ink-muted hover:text-navy transition-colors"
+            className="group block text-sm text-ink-muted hover:text-navy transition-colors"
           >
-            WhatsApp — {SITE.phoneDisplay}
+            WhatsApp — {SITE.phoneDisplay}{" "}
+            <span className="text-ink-faint text-xs opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 inline-block">
+              (100% chance I read it)
+            </span>
           </a>
           <a
             href={`tel:${SITE.phoneE164}`}
-            className="block text-sm text-ink-muted hover:text-navy transition-colors"
+            className="group block text-sm text-ink-muted hover:text-navy transition-colors"
           >
             Call — {SITE.phoneDisplay}{" "}
-            <span className="text-ink-faint">(available sometimes)</span>
+            <span className="text-ink-faint text-xs opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 inline-block">
+              (90% chance I don&apos;t pick up)
+            </span>
           </a>
           <a
             href={`mailto:${SITE.email}`}

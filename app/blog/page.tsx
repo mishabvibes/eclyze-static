@@ -9,12 +9,12 @@ import { SITE } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Practical, plain-language guides on websites, pricing, and getting found online — written for small business owners in Kerala.",
+    "Practical, plain-language guides on websites, pricing, and getting found online written for small business owners in Kerala.",
   alternates: { canonical: `${SITE.domain}/blog` },
   openGraph: {
     title: "Blog",
     description:
-      "Practical, plain-language guides on websites, pricing, and getting found online — written for small business owners in Kerala.",
+      "Practical, plain-language guides on websites, pricing, and getting found online written for small business owners in Kerala.",
     url: `${SITE.domain}/blog`,
     type: "website",
   },
@@ -36,7 +36,7 @@ export default function BlogIndex() {
               Straight talk on websites, pricing, and getting found online.
             </h1>
             <p className="mt-4 text-ink-muted max-w-xl leading-relaxed">
-              No jargon, no fluff — just what small business owners in
+              No jargon, no fluff just what small business owners in
               Kerala actually need to know.
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function BlogIndex() {
         <section className="mx-auto max-w-6xl px-6 py-16">
           {posts.length === 0 ? (
             <p className="text-ink-muted">
-              New posts are on the way — check back soon.
+              New posts are on the way check back soon.
             </p>
           ) : (
             <div className="grid md:grid-cols-2 gap-px bg-line border border-line">

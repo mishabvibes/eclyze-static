@@ -22,7 +22,7 @@ export default function WhyUs() {
         <p className="mt-4 max-w-xl text-ink-muted leading-relaxed">
           Most small businesses in Kerala end up choosing between an
           expensive agency or a DIY builder that never quite gets finished.
-          {SITE.name} sits in between — built by a professional, priced for
+          {SITE.name} sits in between built by a professional, priced for
           a small business.
         </p>
 
