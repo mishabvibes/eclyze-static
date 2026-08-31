@@ -17,10 +17,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-bg-panel/70 via-transparent to-bg pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-6 pt-40 pb-24">
-        <div className="corner-brackets inline-flex items-center gap-2 px-3 py-1.5 mb-8">
-          <span className="w-1.5 h-1.5 bg-coral rounded-full animate-pulse-dot" />
+        <div className="corner-brackets inline-flex items-center gap-2 px-1.5 py-1.5 mb-8">
+          {/* <span className="w-1.5 h-1.5 bg-coral rounded-full animate-pulse-dot" /> */}
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-navy">
-            Affordable Website Design, Kerala &amp; India
+            Affordable Website, Kerala &amp; India
           </span>
         </div>
 
