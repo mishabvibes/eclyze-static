@@ -323,7 +323,7 @@ export default function ChatWidget() {
             return next;
           })
         }
-        aria-label={open ? "Close AI chat" : "Open AI chat"}
+        aria-label={open ? "Close" : "Ask Eclyze AI"}
         aria-expanded={open}
         aria-controls="eclyze-chat-panel"
         className="fixed z-50 flex items-center gap-2 bg-bg-invert text-invert-ink font-mono text-xs uppercase tracking-widest px-5 py-3.5 border border-bg-invert shadow-lg hover:bg-coral hover:text-coral-ink hover:border-coral transition-colors touch-manipulation"
@@ -337,7 +337,7 @@ export default function ChatWidget() {
         {!open && unreadCount > 0 && (
           <span
             aria-label={`${unreadCount} new message${unreadCount > 1 ? "s" : ""}`}
-            className="absolute -top-2 -right-2 min-w-[20px] h-5 px-1 flex items-center justify-center rounded-full bg-coral text-coral-ink text-[10px] font-mono font-bold border-2 border-bg"
+            className="absolute -top-2 -right-2 min-w-[20px] h-5 px-1 flex items-center justify-center rounded-full bg-coral text-coral-ink text-[10px] font-mono font-semibold border-2 border-bg"
           >
             {unreadCount > 9 ? "9+" : unreadCount}
           </span>

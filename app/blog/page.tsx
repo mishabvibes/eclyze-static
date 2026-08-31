@@ -72,7 +72,7 @@ export default function BlogIndex() {
                     <p className="mt-3 text-sm text-ink-muted leading-relaxed">
                       {post.description}
                     </p>
-                    <span className="mt-5 font-mono text-[11px] uppercase tracking-widest text-coral">
+                    <span className="mt-5 font-mono text-[11px] uppercase tracking-widest text-navy">
                       Read →
                     </span>
                   </div>

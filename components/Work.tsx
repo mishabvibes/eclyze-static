@@ -140,6 +140,7 @@ export default function Work() {
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Explore the ${p.name} website (opens in a new tab)`}
                 className="mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-ink border border-line-strong px-4 py-2.5 hover:border-navy hover:text-navy transition-colors self-start"
               >
                 Explore Site

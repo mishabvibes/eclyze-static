@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ChatWidget from "@/components/ChatWidget";
+import ChatWidget from "@/components/ChatWidgetLoader";
 import { getAllSlugs, getPostBySlug } from "@/lib/blog";
 import { SITE } from "@/lib/site-config";
 

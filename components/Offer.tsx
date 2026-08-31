@@ -78,13 +78,13 @@ export default function Offer() {
 
           {/* Right column — price card, top-aligned with the heading */}
           <div className="border border-bg-invert bg-bg-invert text-invert-ink p-6 sm:p-8 w-full md:w-80 flex flex-col">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-ink-faint">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-invert-ink/60">
               Flat fee
             </span>
             <div className="mt-2 font-display font-semibold text-4xl sm:text-5xl">
               {SITE.priceDisplay}
             </div>
-            <span className="font-mono text-[11px] text-ink-faint mt-1">
+            <span className="font-mono text-[11px] text-invert-ink/60 mt-1">
               domain billed separately
             </span>
 

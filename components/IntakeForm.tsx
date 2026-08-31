@@ -114,10 +114,11 @@ export default function IntakeForm() {
                       type="button"
                       key={opt}
                       onClick={() => toggleRequirement(opt)}
-                      className={`font-mono text-xs uppercase tracking-wider px-4 py-2 border transition-colors ${active
-                        ? "bg-navy text-invert-ink border-navy"
-                        : "border-line-strong text-ink-muted hover:border-navy hover:text-navy"
-                        }`}
+                      className={`font-mono text-xs uppercase tracking-wider px-4 py-2 border transition-colors ${
+                        active
+                          ? "bg-navy text-invert-ink border-navy"
+                          : "border-line-strong text-ink-muted hover:border-navy hover:text-navy"
+                      }`}
                     >
                       {opt}
                     </button>
@@ -136,6 +137,7 @@ export default function IntakeForm() {
                   name="domain"
                   defaultValue=""
                   required
+                  aria-label="Domain Strategy"
                   className="w-full appearance-none bg-bg border border-line-strong px-4 py-3 pr-11 text-sm text-ink cursor-pointer transition-colors hover:border-navy/50 focus:outline-none focus:border-navy"
                 >
                   <option value="" disabled>

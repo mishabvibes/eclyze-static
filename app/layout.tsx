@@ -7,7 +7,6 @@ import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
 
 import "./globals.css";
 import { SITE } from "@/lib/site-config";
@@ -19,7 +18,6 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.domain),
-  applicationName: SITE.name,
   title: {
     default: title,
     template: `%s | ${SITE.name}`,
@@ -40,17 +38,16 @@ export const metadata: Metadata = {
   authors: [{ name: SITE.name }],
   creator: SITE.name,
   publisher: SITE.name,
-  icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  },
-  manifest: "/site.webmanifest",
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
   },
   robots: {
     index: true,
@@ -69,14 +66,6 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title,
     description,
-    images: [
-      {
-        url: "/android-chrome-512x512.png",
-        width: 512,
-        height: 512,
-        alt: SITE.name,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -94,6 +83,7 @@ const organizationSchema = {
   name: SITE.name,
   description,
   url: SITE.domain,
+  logo: `${SITE.domain}/icon-512.png`,
   telephone: SITE.phoneE164,
   email: SITE.email,
   priceRange: SITE.priceDisplay,
@@ -109,6 +99,14 @@ const organizationSchema = {
   sameAs: [] as string[],
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  alternateName: SITE.tagline,
+  url: SITE.domain,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -119,6 +117,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
           }}
         />
       </head>

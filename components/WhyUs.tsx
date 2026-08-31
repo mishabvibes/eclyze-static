@@ -47,9 +47,12 @@ export default function WhyUs() {
             <tbody>
               {rows.map((r) => (
                 <tr key={r.label} className="border-b border-line">
-                  <td className="py-4 pr-4 text-sm text-ink-muted">
+                  <th
+                    scope="row"
+                    className="py-4 pr-4 text-sm font-normal text-left text-ink-muted"
+                  >
                     {r.label}
-                  </td>
+                  </th>
                   <td className="py-4 px-4 text-sm font-medium text-ink bg-coral/10">
                     {r.eclyze}
                   </td>
