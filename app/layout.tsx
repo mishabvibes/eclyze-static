@@ -1,15 +1,52 @@
 import type { Metadata } from "next";
-
-import "@fontsource/space-grotesk/500.css";
-import "@fontsource/space-grotesk/600.css";
-import "@fontsource/space-grotesk/700.css";
-import "@fontsource/jetbrains-mono/400.css";
-import "@fontsource/jetbrains-mono/500.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
+import localFont from "next/font/local";
 
 import "./globals.css";
 import { SITE } from "@/lib/site-config";
+
+// Self-hosted via next/font/local (files in app/fonts, sourced from the
+// @fontsource packages we previously loaded as render-blocking CSS).
+// next/font preloads only the exact weights used as priority <link> tags
+// in <head> (no separate CSS file the browser has to fetch and parse
+// before it even discovers the font URLs) and computes ascent/descent/
+// line-gap/size-adjust overrides for a fallback face sized to match.
+//
+// display: "optional" (rather than "swap") is what actually removes the
+// layout shift: with "swap" the browser always paints the fallback first
+// and then swaps to the webfont whenever it arrives, and that swap can
+// still reflow text even with matched metrics (line-wrap differences,
+// etc.) — every "swap" test measured non-zero CLS. "optional" gives the
+// font a very short (~100ms) window to be ready; if it is, it's used from
+// the very first paint (no swap, no shift); if it isn't, the page keeps
+// the metric-matched fallback for that visit and never swaps mid-page —
+// so there is nothing to reflow. The real font is still cached after
+// first load, so it renders immediately from then on.
+const spaceGrotesk = localFont({
+  src: [
+    { path: "./fonts/space-grotesk-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/space-grotesk-600.woff2", weight: "600", style: "normal" },
+  ],
+  display: "optional",
+  variable: "--font-display",
+});
+
+const jetbrainsMono = localFont({
+  src: [
+    { path: "./fonts/jetbrains-mono-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/jetbrains-mono-500.woff2", weight: "500", style: "normal" },
+  ],
+  display: "optional",
+  variable: "--font-mono",
+});
+
+const inter = localFont({
+  src: [
+    { path: "./fonts/inter-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/inter-500.woff2", weight: "500", style: "normal" },
+  ],
+  display: "optional",
+  variable: "--font-body",
+});
 
 const title =
   "Affordable Website Development in Kerala & India | Eclyze";
@@ -111,7 +148,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${inter.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"

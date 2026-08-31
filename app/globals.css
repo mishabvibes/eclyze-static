@@ -14,9 +14,10 @@
   --gold: #C9962F;
   --coral-ink: #14161B;
   --invert-ink: #F6F1E4;
-  --font-display: "Space Grotesk", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  --font-body: "Inter", sans-serif;
+  /* --font-display / --font-mono / --font-body are provided by next/font
+     (see app/layout.tsx) via a className on <html>. next/font injects the
+     full font stack, including a size-matched fallback face, so nothing
+     needs to be declared here. */
 }
 
 @theme inline {
