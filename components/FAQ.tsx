@@ -14,7 +14,7 @@ export default function FAQ() {
         <div className="mt-14 grid md:grid-cols-2 gap-px bg-line border border-line">
           {faqs.map((f) => (
             <div key={f.q} className="bg-bg p-6">
-              <h3 className="font-display font-medium text-base text-ink">
+              <h3 className="font-display-alt font-medium text-base text-ink">
                 {f.q}
               </h3>
               <p className="mt-3 text-sm text-ink-muted leading-relaxed">

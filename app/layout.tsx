@@ -21,22 +21,42 @@ import { SITE } from "@/lib/site-config";
 // the metric-matched fallback for that visit and never swaps mid-page —
 // so there is nothing to reflow. The real font is still cached after
 // first load, so it renders immediately from then on.
+//
+// Space Grotesk 600 and JetBrains Mono 400 are the only weights used
+// above the fold (Header/Hero) — Space Grotesk 500 only appears in
+// below-the-fold sections, and JetBrains Mono 500 only in the lazy,
+// client-only ChatWidget badge. Splitting each family into a "critical"
+// call (preloaded) and a "secondary" call (not preloaded) stops those
+// two files from competing with the four fonts that are actually needed
+// for first paint/LCP over the initial, most contended connections —
+// they still load, just at normal (not preload) priority, exactly when
+// the browser reaches their @font-face rule in the stylesheet.
 const spaceGrotesk = localFont({
-  src: [
-    { path: "./fonts/space-grotesk-500.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/space-grotesk-600.woff2", weight: "600", style: "normal" },
-  ],
+  src: [{ path: "./fonts/space-grotesk-600.woff2", weight: "600", style: "normal" }],
   display: "optional",
+  preload: true,
   variable: "--font-display",
 });
 
-const jetbrainsMono = localFont({
-  src: [
-    { path: "./fonts/jetbrains-mono-400.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/jetbrains-mono-500.woff2", weight: "500", style: "normal" },
-  ],
+const spaceGroteskSecondary = localFont({
+  src: [{ path: "./fonts/space-grotesk-500.woff2", weight: "500", style: "normal" }],
   display: "optional",
+  preload: false,
+  variable: "--font-display-secondary",
+});
+
+const jetbrainsMono = localFont({
+  src: [{ path: "./fonts/jetbrains-mono-400.woff2", weight: "400", style: "normal" }],
+  display: "optional",
+  preload: true,
   variable: "--font-mono",
+});
+
+const jetbrainsMonoSecondary = localFont({
+  src: [{ path: "./fonts/jetbrains-mono-500.woff2", weight: "500", style: "normal" }],
+  display: "optional",
+  preload: false,
+  variable: "--font-mono-secondary",
 });
 
 const inter = localFont({
@@ -150,7 +170,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${inter.variable}`}
+      className={`${spaceGrotesk.variable} ${spaceGroteskSecondary.variable} ${jetbrainsMono.variable} ${jetbrainsMonoSecondary.variable} ${inter.variable}`}
     >
       <head>
         <script

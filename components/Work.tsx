@@ -126,7 +126,7 @@ export default function Work() {
                 displayUrl={p.displayUrl}
               />
               <div className="mt-5 flex items-baseline justify-between">
-                <h3 className="font-display font-medium text-lg">
+                <h3 className="font-display-alt font-medium text-lg">
                   {p.name}
                 </h3>
                 <span className="font-mono text-[10px] uppercase tracking-widest text-navy">

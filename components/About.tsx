@@ -29,7 +29,7 @@ export default function About() {
                     </div>
 
                     <div className="max-w-2xl">
-                        <p className="font-display font-medium text-lg text-ink">
+                        <p className="font-display-alt font-medium text-lg text-ink">
                             {FOUNDER_NAME}
                         </p>
                         <p className="font-mono text-[11px] uppercase tracking-widest text-ink-faint mt-1">

@@ -101,7 +101,7 @@ export default async function BlogPostPage({
           )}
 
           <div className="mt-14 corner-brackets border border-line bg-bg-panel p-6">
-            <p className="font-display font-medium text-ink">
+            <p className="font-display-alt font-medium text-ink">
               Ready for a website like this business needs?
             </p>
             <p className="mt-1 text-sm text-ink-muted">

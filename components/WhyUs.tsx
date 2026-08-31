@@ -36,10 +36,10 @@ export default function WhyUs() {
                 <th className="py-4 px-4 font-display font-semibold text-navy">
                   {SITE.name}
                 </th>
-                <th className="py-4 px-4 font-display font-medium text-ink-muted">
+                <th className="py-4 px-4 font-display-alt font-medium text-ink-muted">
                   Typical Agency
                 </th>
-                <th className="py-4 px-4 font-display font-medium text-ink-muted">
+                <th className="py-4 px-4 font-display-alt font-medium text-ink-muted">
                   DIY Builder
                 </th>
               </tr>

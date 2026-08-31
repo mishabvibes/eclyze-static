@@ -42,7 +42,7 @@ export default function Standard() {
                   {f.tag}
                 </span>
               </div>
-              <h3 className="font-display font-medium text-xl leading-snug">
+              <h3 className="font-display-alt font-medium text-xl leading-snug">
                 {f.title}
               </h3>
               <p className="text-ink-muted text-sm leading-relaxed">

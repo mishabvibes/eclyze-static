@@ -115,6 +115,19 @@ body {
   font-family: var(--font-mono), monospace;
 }
 
+/* Secondary (not preloaded) weights — Space Grotesk 500 for below-the-fold
+   headings, JetBrains Mono 500 for the lazy ChatWidget badge. Kept as
+   separate font-family names so they don't compete with the four
+   above-the-fold fonts for the browser's early, preload-priority
+   connections; see app/layout.tsx. */
+.font-display-alt {
+  font-family: var(--font-display-secondary), sans-serif;
+}
+
+.font-mono-alt {
+  font-family: var(--font-mono-secondary), monospace;
+}
+
 ::selection {
   background: var(--coral);
   color: var(--ink);

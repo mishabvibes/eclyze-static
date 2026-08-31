@@ -337,7 +337,7 @@ export default function ChatWidget() {
         {!open && unreadCount > 0 && (
           <span
             aria-label={`${unreadCount} new message${unreadCount > 1 ? "s" : ""}`}
-            className="absolute -top-2 -right-2 min-w-[20px] h-5 px-1 flex items-center justify-center rounded-full bg-coral text-coral-ink text-[10px] font-mono font-semibold border-2 border-bg"
+            className="absolute -top-2 -right-2 min-w-[20px] h-5 px-1 flex items-center justify-center rounded-full bg-coral text-coral-ink text-[10px] font-mono-alt font-semibold border-2 border-bg"
           >
             {unreadCount > 9 ? "9+" : unreadCount}
           </span>
