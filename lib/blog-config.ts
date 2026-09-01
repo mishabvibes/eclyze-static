@@ -24,6 +24,21 @@ export const BLOG_CONFIG = {
     "Write like a knowledgeable person explaining something to a friend " +
     "who runs a small business, not like a marketing brochure.",
 
+  // Content mix guidance for the AI topic-idea generator (used when the
+  // topic queue in content/blog-topics.json runs dry and the model has
+  // to invent fresh ideas). Keeps the blog anchored on core buyer
+  // search intent, with the AI concierge feature as a minority,
+  // recurring differentiator angle — not the blog's main subject.
+  contentMixNote:
+    "About 7 in 10 ideas should be core small-business-website topics " +
+    "(cost, timeline, SEO, mistakes to avoid, mobile-first, domains, " +
+    "maintenance — things a Kerala shop owner would actually search for). " +
+    "About 2 in 10 ideas can spotlight the built-in AI sales concierge " +
+    "feature as a differentiator (what it does, why it helps convert " +
+    "visitors, behind-the-scenes) — but never let AI become the blog's " +
+    "main subject. About 1 in 10 can be brand/trust/founder-story angles. " +
+    "Do not cluster the AI-angle ideas together — spread them out.",
+
   // Target length for each post.
   minWords: 700,
   maxWords: 1100,

@@ -148,7 +148,8 @@ async function pickTopic(cfg, apiKey) {
             `You generate blog topic ideas for a business in this niche: "${cfg.niche}" (${cfg.location}). ` +
             `Respond with ONLY a JSON array of 10 short topic strings, each a distinct, specific, ` +
             `search-worthy angle a small business owner might actually search for. No duplicates of ` +
-            `generic advice — be specific. No text outside the JSON array.`,
+            `generic advice — be specific. No text outside the JSON array.\n\n` +
+            `Content mix: ${cfg.contentMixNote}`,
         },
         {
           role: "user",
