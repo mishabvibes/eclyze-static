@@ -546,7 +546,7 @@ export default function ChatWidget() {
               disabled={loading}
               enterKeyHint="send"
               autoComplete="off"
-              className="flex-1 min-w-0 bg-transparent text-base sm:text-sm text-invert-ink placeholder:text-invert-ink/40 focus:outline-none px-2 py-2.5 disabled:opacity-50"
+              className="flex-1 min-w-0 bg-white/5 text-base sm:text-sm text-invert-ink placeholder:text-invert-ink/40 focus:outline-none px-2 py-2.5 disabled:opacity-50"
             />
             <button
               type="submit"
