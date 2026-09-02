@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { SITE } from "@/lib/site-config";
 
 export default function Footer() {
   return (
     <footer className="grid-dots">
-      <div className="mx-auto max-w-6xl px-6 py-16 flex flex-col md:flex-row md:items-end justify-between gap-10">
+      <div className="mx-auto max-w-6xl px-6 py-16 flex flex-col md:flex-row md:items-start justify-between gap-10">
         <div>
           <div className="font-display font-semibold text-xl">
             {SITE.name}
@@ -13,6 +14,42 @@ export default function Footer() {
             Affordable, mobile-first websites for businesses across Kerala
             and India delivered in 5 days flat.
           </p>
+        </div>
+
+        <div className="space-y-2">
+          <span className="block font-mono text-[11px] uppercase tracking-widest text-ink-faint mb-2">
+            Explore
+          </span>
+          <Link
+            href="/website-cost-kerala"
+            className="block text-sm text-ink-muted hover:text-navy transition-colors"
+          >
+            Website Cost in Kerala
+          </Link>
+          <Link
+            href="/small-business-website"
+            className="block text-sm text-ink-muted hover:text-navy transition-colors"
+          >
+            Websites for Small Business
+          </Link>
+          <Link
+            href="/website-design-kochi"
+            className="block text-sm text-ink-muted hover:text-navy transition-colors"
+          >
+            Website Design in Kochi
+          </Link>
+          <Link
+            href="/ai-chatbot-website"
+            className="block text-sm text-ink-muted hover:text-navy transition-colors"
+          >
+            AI Chatbot Websites
+          </Link>
+          <Link
+            href="/blog"
+            className="block text-sm text-ink-muted hover:text-navy transition-colors"
+          >
+            Blog
+          </Link>
         </div>
 
         <div className="space-y-2">
