@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Standard from "@/components/Standard";
 import Work from "@/components/Work";
 import WhyUs from "@/components/WhyUs";
+import AIConcierge from "@/components/AIConcierge";
 import About from "@/components/About";
 import Offer from "@/components/Offer";
 import FAQ from "@/components/FAQ";
@@ -19,6 +20,7 @@ export default function Home() {
         <Standard />
         <Work />
         <WhyUs />
+        <AIConcierge />
         <About />
         <Offer />
         <FAQ />

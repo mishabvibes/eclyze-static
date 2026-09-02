@@ -25,4 +25,8 @@ export const faqs = [
     q: "Do you work with businesses outside Kerala?",
     a: "Yes. Eclyze is based in Kerala and works with businesses across India — the entire process, from brief to launch, happens over WhatsApp and call, so location isn't a barrier.",
   },
+  {
+    q: "Is the AI chat assistant always instant?",
+    a: "Almost always yes. During unusually high traffic it can occasionally take a moment longer to reply, and the WhatsApp button is always right there as a backup so a visitor is never left waiting.",
+  },
 ];

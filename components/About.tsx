@@ -2,7 +2,7 @@ import Image from "next/image";
 import { SITE } from "@/lib/site-config";
 
 // TODO: replace with your real name and a short personal bio line.
-const FOUNDER_NAME = "Muhammed Mishab.";
+const FOUNDER_NAME = "Muhammed Mishab Nk";
 const FOUNDER_ROLE = "Founder, Eclyze";
 const FOUNDER_IMAGE = "/founder.webp";
 
