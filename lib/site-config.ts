@@ -23,4 +23,11 @@ export const SITE = {
   areaServed: ["Kerala", "Kochi", "India"],
   addressRegion: "Kerala",
   addressCountry: "IN",
+
+  // TODO: add real profile URLs here (Instagram, Facebook, LinkedIn,
+  // Google Business Profile, etc.). These feed the Organization schema's
+  // "sameAs" field in app/layout.tsx, which helps Google and AI answer
+  // engines confirm Eclyze is a real, active business. Leave entries out
+  // rather than guessing a URL — a wrong link is worse than none.
+  socialProfiles: [] as string[],
 };

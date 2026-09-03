@@ -5,7 +5,13 @@ import IntakeForm from "@/components/IntakeForm";
 import ChatWidget from "@/components/ChatWidgetLoader";
 import { SITE } from "@/lib/site-config";
 
-const title = "Website Cost in Kerala — 2026 Pricing Guide | Eclyze";
+// NOTE: `title` is the bare page title — the root layout's metadata.title.template
+// ("%s | Eclyze") appends the brand suffix automatically for the <title> tag.
+// Don't add "| Eclyze" here, or it renders twice ("... | Eclyze | Eclyze").
+// `fullTitle` is only for surfaces that don't go through that template
+// (Open Graph / Twitter Card), so social shares still show the branded title.
+const title = "Website Cost in Kerala — 2026 Pricing Guide";
+const fullTitle = `${title} | ${SITE.name}`;
 const description =
   "How much does a website cost in Kerala? A straight breakdown of DIY builders, freelancers, agencies, and Eclyze's flat ₹9,999 mobile-first website — no hidden fees.";
 
@@ -20,7 +26,8 @@ export const metadata: Metadata = {
     "cheap website design Kerala",
   ],
   alternates: { canonical: "/website-cost-kerala" },
-  openGraph: { title, description, url: `${SITE.domain}/website-cost-kerala`, type: "website" },
+  openGraph: { title: fullTitle, description, url: `${SITE.domain}/website-cost-kerala`, type: "website" },
+  twitter: { title: fullTitle, description },
 };
 
 const rows = [

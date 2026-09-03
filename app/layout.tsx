@@ -153,7 +153,7 @@ const organizationSchema = {
     addressRegion: SITE.addressRegion,
     addressCountry: SITE.addressCountry,
   },
-  sameAs: [] as string[],
+  sameAs: SITE.socialProfiles,
 };
 
 const websiteSchema = {

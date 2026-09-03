@@ -67,11 +67,20 @@ async function loadConfig() {
 }
 
 function slugify(text) {
-  return text
+  const base = text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 60);
+    .replace(/^-+|-+$/g, "");
+
+  if (base.length <= 60) return base;
+
+  // Cut back to the last complete word instead of a hard character
+  // cutoff, which previously produced truncated slugs like
+  // "...local-businesses-custo" instead of "...-customers".
+  const truncated = base.slice(0, 60);
+  const lastHyphen = truncated.lastIndexOf("-");
+  const trimmed = lastHyphen > 0 ? truncated.slice(0, lastHyphen) : truncated;
+  return trimmed.replace(/-+$/, "");
 }
 
 async function fileExists(p) {

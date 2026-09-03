@@ -5,7 +5,11 @@ import IntakeForm from "@/components/IntakeForm";
 import ChatWidget from "@/components/ChatWidgetLoader";
 import { SITE } from "@/lib/site-config";
 
-const title = "Website Design in Kochi & Across Kerala | Eclyze";
+// NOTE: `title` is the bare page title — the root layout's metadata.title.template
+// ("%s | Eclyze") appends the brand suffix automatically for the <title> tag.
+// Don't add "| Eclyze" here, or it renders twice ("... | Eclyze | Eclyze").
+const title = "Website Design in Kochi & Across Kerala";
+const fullTitle = `${title} | ${SITE.name}`;
 const description =
   "Professional, mobile-first website design for businesses in Kochi and across Kerala flat ₹9,999, live in 5 days. No office visits needed, the entire process runs over WhatsApp and call.";
 
@@ -23,7 +27,8 @@ export const metadata: Metadata = {
     "website design Kottayam",
   ],
   alternates: { canonical: "/website-design-kochi" },
-  openGraph: { title, description, url: `${SITE.domain}/website-design-kochi`, type: "website" },
+  openGraph: { title: fullTitle, description, url: `${SITE.domain}/website-design-kochi`, type: "website" },
+  twitter: { title: fullTitle, description },
 };
 
 const cities = [

@@ -5,7 +5,11 @@ import IntakeForm from "@/components/IntakeForm";
 import ChatWidget from "@/components/ChatWidgetLoader";
 import { SITE } from "@/lib/site-config";
 
-const title = "Website for Small Business in Kerala & India | Eclyze";
+// NOTE: `title` is the bare page title — the root layout's metadata.title.template
+// ("%s | Eclyze") appends the brand suffix automatically for the <title> tag.
+// Don't add "| Eclyze" here, or it renders twice ("... | Eclyze | Eclyze").
+const title = "Website for Small Business in Kerala & India";
+const fullTitle = `${title} | ${SITE.name}`;
 const description =
   "A mobile-first, SEO-ready website built specifically for small businesses in Kerala and across India shops, clinics, restaurants, and service providers. Flat ₹9,999, live in 5 days.";
 
@@ -20,7 +24,8 @@ export const metadata: Metadata = {
     "website design for local business",
   ],
   alternates: { canonical: "/small-business-website" },
-  openGraph: { title, description, url: `${SITE.domain}/small-business-website`, type: "website" },
+  openGraph: { title: fullTitle, description, url: `${SITE.domain}/small-business-website`, type: "website" },
+  twitter: { title: fullTitle, description },
 };
 
 const businessTypes = [

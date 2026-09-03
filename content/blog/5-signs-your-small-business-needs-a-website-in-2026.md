@@ -14,7 +14,7 @@ If you’re only on Instagram, you’re missing out on a lot. A website is no lo
 
 Instagram’s algorithm prioritises the most engaged content. That means only the posts that get the most likes, comments, and shares appear in your followers’ feeds. If you’re a local bakery that only posts a handful of photos each week, you’ll only reach people who already follow you. 
 
-A study by the Kerala Digital Marketing Council found that 68 % of consumers in the state search online before making a purchase. If you’re not on Google or a dedicated website, you’re invisible to that 68 %. A simple landing page with your menu, address, and hours can capture those searches and bring fresh traffic straight to your shop.
+[PwC’s Global Consumer Insights Pulse Survey](https://www.pwc.in/industries/retail-and-consumer/global-consumer-insights-pulse-survey-india-perspective.html) found that more than half of Indian consumers now rank search engines as their top source of pre-purchase research. If you’re not on Google or a dedicated website, you’re invisible to that majority of shoppers. A simple landing page with your menu, address, and hours can capture those searches and bring fresh traffic straight to your shop.
 
 ### 2. Your brand credibility is shaky
 

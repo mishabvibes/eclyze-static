@@ -6,7 +6,11 @@ import AIConcierge from "@/components/AIConcierge";
 import ChatWidget from "@/components/ChatWidgetLoader";
 import { SITE } from "@/lib/site-config";
 
-const title = "Website with a Built-in AI Chat Assistant | Eclyze";
+// NOTE: `title` is the bare page title — the root layout's metadata.title.template
+// ("%s | Eclyze") appends the brand suffix automatically for the <title> tag.
+// Don't add "| Eclyze" here, or it renders twice ("... | Eclyze | Eclyze").
+const title = "Website with a Built-in AI Chat Assistant";
+const fullTitle = `${title} | ${SITE.name}`;
 const description =
   "Get a website with a built-in AI sales concierge that answers visitors 24/7 and points serious buyers to WhatsApp. Available on Eclyze websites for Kerala & India businesses.";
 
@@ -21,7 +25,8 @@ export const metadata: Metadata = {
     "AI chat widget website Kerala",
   ],
   alternates: { canonical: "/ai-chatbot-website" },
-  openGraph: { title, description, url: `${SITE.domain}/ai-chatbot-website`, type: "website" },
+  openGraph: { title: fullTitle, description, url: `${SITE.domain}/ai-chatbot-website`, type: "website" },
+  twitter: { title: fullTitle, description },
 };
 
 const faqs = [
